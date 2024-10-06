@@ -28,18 +28,6 @@ const allowedOrigins = [
 const mongoURI = 'mongodb+srv://dbUser:dbUserPassword@cluster0.fypkkcn.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
 
 // Define the sendEmail function
-const transporter = nodemailer.createTransport({
-  service: "gmail", // Use your email service provider (like Gmail)
-  auth: {
-    user: process.env.EMAIL_USER, // Your email
-    pass: process.env.EMAIL_PASSWORD, // Your email password
-  },
-  tls: {
-    rejectUnauthorized: false, // Disable SSL certificate validation
-  },
-});
-
-// Define the sendEmail function **after** transporter is defined
 const sendEmail = async (to, subject, text) => {
   const mailOptions = {
     from: process.env.EMAIL_USER,
@@ -61,21 +49,11 @@ const sendEmail = async (to, subject, text) => {
   });
 };
 
-const corsOptions = {
-  origin: function (origin, callback) {
-    // Allow requests with no origin (like mobile apps or curl requests)
-    if (!origin) return callback(null, true);
-    if (allowedOrigins.indexOf(origin) === -1) {
-      const msg = `The CORS policy for this site does not allow access from the specified Origin: ${origin}`;
-      return callback(new Error(msg), false);
-    }
-    return callback(null, true);
-  },
-  credentials: true, // Allow cookies and authentication
-};
 
-// Use CORS middleware **before** defining routes
-app.use(cors(corsOptions));
+app.use(cors({
+  origin: ['https://ecommerce-web-s55t.vercel.app'],
+  credentials: true,  // This allows cookies and credentials to be sent
+}));
 app.use(express.json());
 app.use("/api/transactions", transactionRoutes);
 app.use("/api", productRoute);
