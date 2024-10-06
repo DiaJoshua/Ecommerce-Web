@@ -28,6 +28,18 @@ const allowedOrigins = [
 const mongoURI = 'mongodb+srv://dbUser:dbUserPassword@cluster0.fypkkcn.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
 
 // Define the sendEmail function
+const transporter = nodemailer.createTransport({
+  service: "gmail", // Use your email service provider (like Gmail)
+  auth: {
+    user: process.env.EMAIL_USER, // Your email
+    pass: process.env.EMAIL_PASSWORD, // Your email password
+  },
+  tls: {
+    rejectUnauthorized: false, // Disable SSL certificate validation
+  },
+});
+
+// Define the sendEmail function **after** transporter is defined
 const sendEmail = async (to, subject, text) => {
   const mailOptions = {
     from: process.env.EMAIL_USER,
@@ -49,7 +61,6 @@ const sendEmail = async (to, subject, text) => {
   });
 };
 
-
 const corsOptions = {
   origin: function (origin, callback) {
     // Allow requests with no origin (like mobile apps or curl requests)
@@ -63,9 +74,8 @@ const corsOptions = {
   credentials: true, // Allow cookies and authentication
 };
 
-// Use CORS middleware
-app.options('*', cors(corsOptions)); // Enable pre-flight for all routes
-
+// Use CORS middleware **before** defining routes
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use("/api/transactions", transactionRoutes);
 app.use("/api", productRoute);
