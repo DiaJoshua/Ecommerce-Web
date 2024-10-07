@@ -50,11 +50,27 @@ const sendEmail = async (to, subject, text) => {
 };
 
 
-app.use(cors({
-  origin: 'https://ecommerce-web-s55t.vercel.app',
-  credentials: true,  // This allows cookies and credentials to be sent
-}));
-app.use(express.json());
+const allowedOrigins = [
+  'https://ecommerce-web-s55t.vercel.app', // Frontend URL
+  'https://www.ecommerce-web-s55t.vercel.app' // If applicable
+];
+
+// CORS options
+const corsOptions = {
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like mobile apps or curl requests)
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.indexOf(origin) === -1) {
+      const msg = `The CORS policy for this site does not allow access from the specified Origin: ${origin}`;
+      return callback(new Error(msg), false);
+    }
+    return callback(null, true);
+  },
+  credentials: true, // Allow cookies and authentication
+};
+
+// Use CORS middleware before other middleware and routes
+app.use(cors(corsOptions));
 app.use("/api/transactions", transactionRoutes);
 app.use("/api", productRoute);
 
