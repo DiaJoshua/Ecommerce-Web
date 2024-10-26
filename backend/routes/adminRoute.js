@@ -1,18 +1,15 @@
-// adminRoute.js
-import express from 'express';
-import {
+const express = require("express");
+const router = express.Router();
+const {
   signup,
   login,
   getAdminById,
   updateAdmin,
-} from '../controllers/adminController.js'; // Ensure correct import
+} = require("../controllers/adminController");
 
-const router = express.Router();
+// router.post('/signup', signup);
+router.post("/login", login);
+router.get("/admin/:id", getAdminById);
+router.patch("/editadmin/:id", updateAdmin);
 
-// Uncomment this line if you have a signup route
-router.post('/signup', signup); // Add this line if signup is needed
-router.post('/login', login);
-router.get('/admin/:id', getAdminById);
-router.patch('/editadmin/:id', updateAdmin);
-
-export default router; // Use export default for ES modules
+module.exports = router;

@@ -1,14 +1,12 @@
-// Importing modules using ES Module syntax
-import express from "express";
-import mongoose from "mongoose";
-import jwt from "jsonwebtoken";
-import path from "path";
-import cors from "cors";
-import multer from "multer";
-import nodemailer from "nodemailer";
-import otpGenerator from "otp-generator";
-import dotenv from "dotenv";
-import { fileURLToPath } from 'url';
+const express = require("express");
+const mongoose = require("mongoose");
+const jwt = require("jsonwebtoken");
+const path = require("path");
+const cors = require("cors");
+const multer = require("multer");
+const nodemailer = require("nodemailer");
+const otpGenerator = require("otp-generator");
+const dotenv = require("dotenv");
 
 // Load environment variables
 dotenv.config();
@@ -17,30 +15,29 @@ dotenv.config();
 const port = 4000;
 const app = express();
 
-//Reloveing dirname for ES Module
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+// Get the current directory
+const currentDir = path.resolve(); // Renamed variable to avoid conflict
 
-// import routes
-import adminRoutes from "./routes/adminRoute.js";
-import orderRouter from "./routes/orderRoute.js";
-import sellerRouter from "./routes/sellerRoute.js";
-import userRoutes from "./routes/userRoute.js";
-import transactionRoutes from "./routes/transactionRoute.js";
-import productRoute from "./routes/productRoute.js";
-import cartRoute from "./routes/cartRoute.js";
-import { signup } from "./controllers/sellerController.js";
-import { getUsers } from "./controllers/userController.js";
-import { ObjectId } from 'mongodb';
-
+// Import routes
+const adminRoutes = require("./routes/adminRoute");
+const orderRouter = require("./routes/orderRoute");
+const sellerRouter = require("./routes/sellerRoute");
+const userRoutes = require("./routes/userRoute");
+const transactionRoutes = require("./routes/transactionRoute");
+const productRoute = require("./routes/productRoute");
+const cartRoute = require("./routes/cartRoute");
+const { signup } = require("./controllers/sellerController");
+const { getUsers } = require("./controllers/userController");
+const { ObjectId } = require('mongodb');
 
 const mongoURI = process.env.MONGODB_URI;
 
 // Use the Client App
-app.use(express.static(path.join('__dirname, backend/client/public')))
+app.use(express.static(path.join(currentDir, '/client/public'))); // Use the new variable name
 
-// Render client fron any path 
-app.get('*', (req, res) => res.sendFile(path.join('__dirname, backend/client/public/index.html')))
+// Render client from any path 
+app.get('*', (req, res) => res.sendFile(path.join(currentDir, '/client/src', 'index.js'))); // Use the new variable name
+
 
 // Define the sendEmail function
 const sendEmail = async (to, subject, text) => {

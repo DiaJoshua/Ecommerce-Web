@@ -1,5 +1,4 @@
-// adminUserModel.js
-import mongoose from 'mongoose';
+const mongoose = require("mongoose");
 
 const adminUserSchema = new mongoose.Schema(
   {
@@ -21,11 +20,10 @@ const adminUserSchema = new mongoose.Schema(
     },
     role: {
       type: String,
-      default: 'admin',
+      default: "admin",
     },
   },
   { timestamps: true }
 );
 
-const AdminUser = mongoose.model('AdminUser', adminUserSchema);
-export default AdminUser; // Use export default
+module.exports = mongoose.model("AdminUser", adminUserSchema);
