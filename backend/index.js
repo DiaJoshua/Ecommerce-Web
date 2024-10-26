@@ -33,10 +33,12 @@ const { ObjectId } = require('mongodb');
 const mongoURI = process.env.MONGODB_URI;
 
 // Use the Client App
-app.use(express.static(path.join(currentDir, '/client/public'))); // Use the new variable name
+// Use the Client App
+app.use(express.static(path.join(__dirname, 'client/build')));
 
-// Render client from any path 
-app.get('*', (req, res) => res.sendFile(path.join(currentDir, '/client/src', 'index.js'))); // Use the new variable name
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+});
 
 
 // Define the sendEmail function
