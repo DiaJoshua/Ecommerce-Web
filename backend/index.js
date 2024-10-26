@@ -40,7 +40,7 @@ const mongoURI = process.env.MONGODB_URI;
 app.use(express.static(path.join('__dirname, backend/client/public')))
 
 // Render client fron any path 
-app.get('*', (req, res) => res.sendFile(path.join('__dirname, backend/client/')))
+app.get('*', (req, res) => res.sendFile(path.join('__dirname, backend/client/public/index.html')))
 
 // Define the sendEmail function
 const sendEmail = async (to, subject, text) => {
