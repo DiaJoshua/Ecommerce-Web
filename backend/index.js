@@ -10,6 +10,8 @@ const multer = require("multer");
 const nodemailer = require("nodemailer");
 const otpGenerator = require("otp-generator");
 
+
+
 // import routes
 const adminRoutes = require("./routes/adminRoute");
 const orderRouter = require("./routes/orderRoute");
@@ -25,6 +27,9 @@ const { ObjectId } = require('mongodb');
 require("dotenv").config();
 
 const mongoURI = process.env.MONGODB_URI;
+
+//Use the Client App
+app.use(express.static('/client/'))
 
 // Define the sendEmail function
 const sendEmail = async (to, subject, text) => {
