@@ -45,7 +45,7 @@ const MyOrders = () => {
   const fetchOrders = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:4000/api/transactions/userTransactions/${userId}`
+        `http://tienda-han.onrender.com/api/transactions/userTransactions/${userId}`
       );
       const fetchedOrders = Array.isArray(response.data) ? response.data : [];
       setOrders(fetchedOrders);
@@ -63,7 +63,7 @@ const MyOrders = () => {
     fetchOrders();
 
     // Initialize Socket.IO
-    const socket = io("http://localhost:4000");
+    const socket = io("http://tienda-han.onrender.com");
 
     // Listen for real-time updates on order status
     socket.on("orderUpdated", (updatedOrder) => {

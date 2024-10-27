@@ -10,7 +10,7 @@ const Verify = () => {
 
   const verifyPayment = async () => {
     try {
-      const response = await fetch("http://localhost:3000/api/order/verify", {
+      const response = await fetch("http://tienda-han.onrender.com/api/order/verify", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

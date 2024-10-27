@@ -32,7 +32,7 @@ const ChangePassword = () => {
 
     try {
       const userResponse = await fetch(
-        `http://localhost:4000/fetchuser/${userId}`,
+        `http://tienda-han.onrender.com/fetchuser/${userId}`,
         {
           method: "GET",
           headers: {
@@ -52,7 +52,7 @@ const ChangePassword = () => {
       setNewPassword("");
       setConfirmPassword("");
       const updateResponse = await fetch(
-        `http://localhost:4000/updatepassword/${userId}`,
+        `http://tienda-han.onrender.com/updatepassword/${userId}`,
         {
           method: "POST",
           headers: {

@@ -62,7 +62,7 @@ export const PlaceOrder = () => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await axios.get("http://localhost:4000/api/users", {
+        const response = await axios.get("http://tienda-han.onrender.com/api/users", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -315,9 +315,9 @@ export const PlaceOrder = () => {
           },
         ],
         redirectUrl: {
-          success: `http://localhost:3000/myorders?orderId=${requestReferenceNumber}&status=success`,
-          failure: `http://localhost:3000/myorders?orderId=${requestReferenceNumber}&status=failed`,
-          cancel: `http://localhost:3000/myorders?orderId=${requestReferenceNumber}&status=canceled`,
+          success: `http://tienda-han.onrender.com/myorders?orderId=${requestReferenceNumber}&status=success`,
+          failure: `http://tienda-han.onrender.com/myorders?orderId=${requestReferenceNumber}&status=failed`,
+          cancel: `http://tienda-han.onrender.com/myorders?orderId=${requestReferenceNumber}&status=canceled`,
         },
         requestReferenceNumber,
       };
@@ -347,7 +347,7 @@ export const PlaceOrder = () => {
             console.log("Saving Transaction Details:", transactionDetails);
             try {
               await axios.post(
-                "http://localhost:4000/api/transactions",
+                "http://tienda-han.onrender.com/api/transactions",
                 transactionDetails
               );
               console.log("Transaction saved:", transactionDetails);
@@ -379,7 +379,7 @@ export const PlaceOrder = () => {
                 size: item.size,
                 quantity: item.quantity,
               }));
-              await axios.post("http://localhost:4000/api/updateStock", {
+              await axios.post("http://tienda-han.onrender.com/api/updateStock", {
                 updates: stockUpdates,
               });
               console.log("Stock updated successfully");
@@ -393,7 +393,7 @@ export const PlaceOrder = () => {
           };
 
           updateStock();
-          await axios.delete(`http://localhost:4000/api/cart/${userId}`); // Clear cart after checkout
+          await axios.delete(`http://tienda-han.onrender.com/api/cart/${userId}`); // Clear cart after checkout
           toast.success("Checkout successful!");
         } else {
           console.error("Checkout Response Error:", response.data);

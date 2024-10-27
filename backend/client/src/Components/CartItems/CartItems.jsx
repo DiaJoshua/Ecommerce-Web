@@ -34,7 +34,7 @@ export const CartItems = () => {
 
       try {
         const response = await axios.get(
-          `http://localhost:4000/api/cart/${userId}`
+          `http://tienda-han.onrender.com/api/cart/${userId}`
         );
         if (response.data && response.data.cartItems) {
           console.log(
@@ -60,7 +60,7 @@ export const CartItems = () => {
     }
 
     try {
-      await axios.post("http://localhost:4000/api/cart", {
+      await axios.post("http://tienda-han.onrender.com/api/cart", {
         userId,
         cartItems,
       });

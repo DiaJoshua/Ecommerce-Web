@@ -9,7 +9,7 @@ const RelatedProducts = ({ category }) => {
     const fetchRelatedProducts = async () => {
       try {
         const response = await fetch(
-          `http://localhost:4000/relatedproducts/${category}`
+          `http://tienda-han.onrender.com/relatedproducts/${category}`
         );
         if (response.ok) {
           const data = await response.json();

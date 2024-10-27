@@ -43,7 +43,7 @@ const Address = () => {
       try {
         const userId = localStorage.getItem('userId'); // Get userId from local storage
         const token = localStorage.getItem("authToken"); // Ensure you store and retrieve the token properly
-        const response = await axios.get(`http://localhost:4000/api/users/${userId}`, {
+        const response = await axios.get(`http://tienda-han.onrender.com/api/users/${userId}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         // Assuming the response contains the user data, set it in state
@@ -144,7 +144,7 @@ const Address = () => {
 
         console.log("Form Data: ", formData); // Debug form data
 
-        const response = await axios.patch('http://localhost:4000/api/edituser/address', {
+        const response = await axios.patch('http://tienda-han.onrender.com/api/edituser/address', {
           userId,
           addressData: formData
         });
