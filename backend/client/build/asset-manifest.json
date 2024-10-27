@@ -1,0 +1,36 @@
+{
+  "files": {
+    "main.css": "/static/css/main.41b52319.css",
+    "main.js": "/static/js/main.7996f43c.js",
+    "static/media/hero_image.png": "/static/media/hero_image.dc634d2efeaaa90bde8d.png",
+    "static/media/tlogo.png": "/static/media/tlogo.ad0e4e6cdb9f03682a64.png",
+    "static/media/offer_image.png": "/static/media/offer_image.c87c34444135b466eb6e.png",
+    "static/media/tll.png": "/static/media/tll.b925d05449ce3af60b85.png",
+    "static/media/Clothes_Banner.png": "/static/media/Clothes_Banner.8c3783646a0bf47a1958.png",
+    "static/media/1.png": "/static/media/1.920fd2f820c69d1e780f.png",
+    "static/media/2.png": "/static/media/2.886424863971c1960e13.png",
+    "static/media/4.png": "/static/media/4.7dcfc6da4fda9c51043a.png",
+    "static/media/3.png": "/static/media/3.83b9aeda7b7f1f41ab4c.png",
+    "static/media/t.png": "/static/media/t.5317bf4a2b1a90552d99.png",
+    "static/media/Food_Banner.png": "/static/media/Food_Banner.618aa04ceb88369f07e2.png",
+    "static/media/Crafts_Banner.png": "/static/media/Crafts_Banner.e06dc9f457bc9818eb5c.png",
+    "static/media/visa.jpg": "/static/media/visa.e06b63e4c3ed6cdf15f8.jpg",
+    "static/media/mc.jpg": "/static/media/mc.d01d17f75bddc92cef3a.jpg",
+    "static/media/in.png": "/static/media/in.72f786db3efa25299690.png",
+    "static/media/qq.png": "/static/media/qq.5c7a5d2e0a43c24b173e.png",
+    "static/media/gg.png": "/static/media/gg.d39db553a845a43c98d4.png",
+    "static/media/ff.png": "/static/media/ff.14dbb75ca766dd90db51.png",
+    "static/media/ee.png": "/static/media/ee.71cd087880aadec47fc6.png",
+    "static/media/dd.png": "/static/media/dd.d9aca14b6c7f480c4e42.png",
+    "static/media/ii.png": "/static/media/ii.64f6dda7e9cdd24e2031.png",
+    "static/media/jj.png": "/static/media/jj.1c3e6af2bbb9e7568967.png",
+    "static/media/mm.png": "/static/media/mm.898a5a596e8953aa93f1.png",
+    "index.html": "/index.html",
+    "main.41b52319.css.map": "/static/css/main.41b52319.css.map",
+    "main.7996f43c.js.map": "/static/js/main.7996f43c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.41b52319.css",
+    "static/js/main.7996f43c.js"
+  ]
+}
