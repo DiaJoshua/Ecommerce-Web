@@ -2,7 +2,7 @@
 const Seller = require("../models/sellerModels");
 const jwt = require("jsonwebtoken");
 const { validationResult } = require("express-validator");
-const bcrypt = require("bcryptjs");
+const bcrypt = require("bcrypt");
 
 // Signup Controller
 const signup = async (req, res) => {
