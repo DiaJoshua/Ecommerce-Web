@@ -1,6 +1,6 @@
 const express = require("express"); // Import express
 const jwt = require("jsonwebtoken");
-const bcrypt = require("bcryptjs");
+const bcrypt = require("bcrypt");
 const AdminUser = require("../models/adminUserModel");
 const authMiddleware = require("../middleware/auth");
 require("dotenv").config();
