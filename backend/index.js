@@ -1,22 +1,27 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
-const path = require("path");
 const cors = require("cors");
 const multer = require("multer");
 const nodemailer = require("nodemailer");
 const otpGenerator = require("otp-generator");
 const dotenv = require("dotenv");
+const path = require("path");
 
 // Load environment variables
 dotenv.config();
 
 // Setting up variables and constants
-const port = 4000;
+const port = process.env.PORT || 4000;
 const app = express();
 
-// Get the current directory
-const currentDir = path.resolve(); // Renamed variable to avoid conflict
+// Use the Client App
+const currentDir = path.resolve();
+app.use(express.static(path.join(currentDir, "client/build")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(currentDir, "client/build", "index.html"));
+});
 
 // Import routes
 const adminRoutes = require("./routes/adminRoute");
@@ -31,14 +36,6 @@ const { getUsers } = require("./controllers/userController");
 const { ObjectId } = require('mongodb');
 
 const mongoURI = process.env.MONGODB_URI;
-
-// Use the Client App
-// Use the Client App
-app.use(express.static(path.join(__dirname, 'client/build')));
-
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
-});
 
 
 // Define the sendEmail function
